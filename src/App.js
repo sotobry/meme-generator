@@ -33,14 +33,14 @@ export default class App extends React.Component {
 
   render = () => {
     const { state, setTexts, handleChange, setRandomImgIdx, toggleAllCaps } = this;
-
+    const { imgsData } = state;
     const createMemeImgProps = { ...state };
     const createMemeFormProps = { ...state, setTexts, handleChange, setRandomImgIdx, toggleAllCaps };
 
     return (
       <div className="App">
         <CreateMemeForm {...createMemeFormProps} />
-        <CreateMemeImg {...createMemeImgProps} />
+        {imgsData && <CreateMemeImg {...createMemeImgProps} />}
       </div>
     );
   };
