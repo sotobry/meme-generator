@@ -11,6 +11,7 @@ const CreateMemeImg = props => {
   return (
     <div className='CreateMemeImg' style={style}>
       <CreateMemeText {...createMemeTextProps} text={text1} />
+      <CreateMemeText {...createMemeTextProps} text={text2} />
     </div>
   );
 };
