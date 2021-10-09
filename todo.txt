@@ -1,0 +1,3 @@
+_connect labels to their input elements.
+_check if you need the 'randBtn' class for the button.
+_in the CreateMemeForm.js, in the toggle-all-caps button element, move the styling to a css file.
