@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Open+Sans:wght@400;500;600;700;800&family=Roboto:wght@400;500;700;900&display=swap');
+
+@font-face {
+  font-family: Impact;
+  src: url('./fonts/Impact/Impact.ttf') format('truetype');
+  font-weight: bolder;
+}
+
 body {
   margin: 0;
   background-color: black;
   color: white;
+  font-family: 'Roboto';
 }
