@@ -7,7 +7,11 @@ export default class CreateMemeText extends React.Component {
 
   render = () => {
     const { state, props } = this;
-    const { text } = props;
-    return (<p>{text}</p>);
+    const { text, isAllCaps } = props;
+
+    const style = {
+      textTransform: isAllCaps ? 'uppercase' : 'none'
+    };
+    return (<p style={style}>{text}</p>);
   };
 };
