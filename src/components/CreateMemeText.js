@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './CreateMemeText.css';
 export default class CreateMemeText extends React.Component {
   state = {
 
@@ -12,6 +12,6 @@ export default class CreateMemeText extends React.Component {
     const style = {
       textTransform: isAllCaps ? 'uppercase' : 'none'
     };
-    return (<p style={style}>{text}</p>);
+    return (<p className='CreateMemeText' style={style}>{text}</p>);
   };
 };

@@ -1,0 +1,13 @@
+.CreateMemeText {
+  --offset: 1px;
+
+  text-shadow: 
+    calc(var(--offset) * -1) calc(var(--offset) * -1) black,
+    calc(var(--offset) * -1) 0 black,
+    calc(var(--offset) * -1) var(--offset) black,
+    0 var(--offset) black,
+    var(--offset) var(--offset) black,
+    var(--offset) 0 black,
+    var(--offset) calc(var(--offset) * -1) black,
+    0 calc(var(--offset) * -1) black;
+}
