@@ -9,7 +9,8 @@ export default class App extends React.Component {
     imgIdx: 0,
     texts: { text1: '', text2: '' },
     isAllCaps: false,
-    fontIdx: 0
+    fontIdx: 0,
+    fontSize: 12
   };
 
   setTexts = ({ currentTarget: { name, value } }) =>

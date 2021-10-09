@@ -20,8 +20,7 @@ const CreateMemeForm = props => {
 
   const handleSubmit = ev => { console.log('form submitted') };
 
-  const { imgsData, imgIdx, texts: { text1, text2 }, isAllCaps, fontIdx } = props;
-  // console.log({ texts });
+  const { imgsData, imgIdx, texts: { text1, text2 }, isAllCaps, fontIdx, fontSize } = props;
 
   return (
     <form className='CreateMemeForm'
@@ -78,6 +77,17 @@ const CreateMemeForm = props => {
             </option>)}
         </select>
       </div>
+      <div className='field'>
+        <label>Enter font size</label>
+        <input type='number'
+          name='fontSize'
+          min='6'
+          max='96'
+          step='6'
+          value={fontSize}
+          onChange={handleChange}
+        />
+      </div>
       <button className='addMeme'>Add Meme</button>
       <br />
       <br />
@@ -85,7 +95,8 @@ const CreateMemeForm = props => {
       text1 ({typeof text1}): {text1} <br />
       text2 ({typeof text2}): {text2} <br />
       isAllCaps ({typeof isAllCaps}): {String(isAllCaps)} <br />
-      fontIdx ({typeof fontIdx}): {fontIdx}
+      fontIdx ({typeof fontIdx}): {fontIdx} <br />
+      fontSize ({typeof fontSize}): {fontSize} <br />
     </form>
   );
 };
