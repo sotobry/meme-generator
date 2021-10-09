@@ -1,5 +1,9 @@
 .CreateMemeImg {
   width: 500px;
   height: 500px;
-  background-color: red;
+  border: 1px solid white;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
