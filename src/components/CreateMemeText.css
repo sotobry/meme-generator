@@ -10,4 +10,9 @@
     var(--offset) 0 black,
     var(--offset) calc(var(--offset) * -1) black,
     0 calc(var(--offset) * -1) black;
+
+  cursor: move;
+}
+.CreateMemeText.isDragging {
+  opacity: 0.01;
 }

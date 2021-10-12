@@ -6,4 +6,11 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+
+  position: relative;
+}
+.CreateMemeImg .CreateMemeText {
+  margin: 0;
+  position: absolute;
+  background-color: red;
 }
