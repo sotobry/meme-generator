@@ -5,7 +5,9 @@ import fontsData from '../data/fonts';
 import './CreateMemeForm.css';
 
 const CreateMemeForm = props => {
-  const { setTexts, handleChange: superHandleChange, setRandomImgIdx, toggleAllCaps } = props;
+  const { resetState, setTexts, handleChange: superHandleChange, setRandomImgIdx, toggleAllCaps, addMeme } = props;
+  const { imgsData, imgIdx, texts, fontIdx, fontSize, isAllCaps, pos } = props;
+  const { text1, text2 } = texts;
 
   const handleChange = ev => {
     const { name } = ev.currentTarget;
@@ -19,9 +21,12 @@ const CreateMemeForm = props => {
     else if (name === 'toggleAllCapsBtn') toggleAllCaps();
   };
 
-  const handleSubmit = ev => { console.log('form submitted') };
-
-  const { imgsData, imgIdx, texts: { text1, text2 }, isAllCaps, fontIdx, fontSize } = props;
+  const handleSubmit = ev => {
+    ev.preventDefault();
+    const data = { imgIdx, texts, fontIdx, fontSize, isAllCaps, pos };
+    addMeme(data);
+    resetState();
+  };
 
   return (
     <form className='CreateMemeForm'
@@ -33,9 +38,8 @@ const CreateMemeForm = props => {
           value={imgIdx}
           onChange={handleChange}
         >
-          {imgsData &&
-            imgsData.map(({ id, name }, i) =>
-              <option key={id} value={i}>{name}</option>)}
+          {imgsData.map(({ id, name }, i) =>
+            <option key={id} value={i}>{name}</option>)}
         </select>
         <button type='button'
           name='randImgBtn'

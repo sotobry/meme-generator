@@ -8,14 +8,34 @@ export default class MemeGenerator extends React.Component {
   state = {
     imgIdx: 0,
     texts: { text1: '', text2: '' },
-    isAllCaps: false,
     fontIdx: 0,
-    fontSize: 24
+    fontSize: 24,
+    isAllCaps: false,
+    pos: {
+      pos1: { top: 0, left: 0 },
+      pos2: { top: 20, left: 20 },
+    }
   };
+
+  resetState = () => this.setState({
+    imgIdx: 0,
+    texts: { text1: '', text2: '' },
+    fontIdx: 0,
+    fontSize: 24,
+    isAllCaps: false,
+    pos: {
+      pos1: { top: 0, left: 0 },
+      pos2: { top: 20, left: 20 },
+    }
+  });
 
   setTexts = ({ currentTarget: { name, value } }) =>
     this.setState(state =>
       ({ 'texts': { ...state.texts, [name]: value } }));
+
+  setPos = (id, { top, left }) => this.setState(state => ({
+    pos: { ...state.pos, [id]: { top, left } }
+  }));
 
   handleChange = ({ currentTarget: { name, value } }) => {
     const number = Number.parseInt(value, 10);
@@ -33,10 +53,11 @@ export default class MemeGenerator extends React.Component {
     ({ isAllCaps: !state.isAllCaps }));
 
   render = () => {
-    const { props, state, setTexts, handleChange, setRandomImgIdx, toggleAllCaps } = this;
+    const { props, state, resetState, setTexts, setPos, handleChange, setRandomImgIdx, toggleAllCaps } = this;
+    const { imgsData } = props;
 
-    const createMemeImgProps = { ...props, ...state };
-    const createMemeFormProps = { ...props, ...state, setTexts, handleChange, setRandomImgIdx, toggleAllCaps };
+    const createMemeImgProps = { imgsData, ...state, setPos };
+    const createMemeFormProps = { ...props, ...state, resetState, setTexts, handleChange, setRandomImgIdx, toggleAllCaps };
 
     return (
       <div className='MemeGenerator'>
