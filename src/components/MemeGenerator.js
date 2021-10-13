@@ -2,6 +2,8 @@ import React from 'react';
 import CreateMemeForm from './CreateMemeForm';
 import CreateMemeImg from './CreateMemeImg';
 
+import './MemeGenerator.css';
+
 export default class MemeGenerator extends React.Component {
   state = {
     imgIdx: 0,
@@ -22,7 +24,7 @@ export default class MemeGenerator extends React.Component {
 
   setRandomImgIdx = () => {
     const { floor, random } = Math;
-    const { imgsData } = this.state;
+    const { imgsData } = this.props;
     const imgIdx = floor(random() * imgsData.length);
     this.setState({ imgIdx });
   };

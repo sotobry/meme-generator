@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRandom } from '@fortawesome/free-solid-svg-icons'
 import fontsData from '../data/fonts';
+import './CreateMemeForm.css';
 
 const CreateMemeForm = props => {
   const { setTexts, handleChange: superHandleChange, setRandomImgIdx, toggleAllCaps } = props;
@@ -65,7 +66,7 @@ const CreateMemeForm = props => {
           onChange={handleChange}
         />
       </div>
-      <div className='field'>
+      <div className='field font-family'>
         <label>Select font</label>
         <select name='fontIdx'
           value={fontIdx}
@@ -77,26 +78,20 @@ const CreateMemeForm = props => {
             </option>)}
         </select>
       </div>
-      <div className='field'>
+      <div className='field font-size'>
         <label>Enter font size</label>
-        <input type='number'
-          name='fontSize'
-          min='6'
-          max='96'
-          step='6'
-          value={fontSize}
-          onChange={handleChange}
-        />
+        <div>
+          <input type='number'
+            name='fontSize'
+            min='6'
+            max='96'
+            step='6'
+            value={fontSize}
+            onChange={handleChange}
+          /> px
+        </div>
       </div>
-      <button className='addMeme'>Add Meme</button>
-      <br />
-      <br />
-      imgIdx ({typeof imgIdx}): {imgIdx} <br />
-      text1 ({typeof text1}): {text1} <br />
-      text2 ({typeof text2}): {text2} <br />
-      isAllCaps ({typeof isAllCaps}): {String(isAllCaps)} <br />
-      fontIdx ({typeof fontIdx}): {fontIdx} <br />
-      fontSize ({typeof fontSize}): {fontSize} <br />
+      <button className='addMemeBtn'>Add Meme</button>
     </form>
   );
 };
