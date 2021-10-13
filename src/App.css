@@ -1,0 +1,41 @@
+header {
+  background-color: cyan;
+  background-color: rgb(230, 230, 230);
+
+  padding-left: 20px;
+  height: 100px;
+  display: flex;
+
+  border-bottom: #888 1px solid;
+}
+
+h1 {
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-family: 'Impact', monospace;
+  font-size: 3rem;
+  font-weight: bolder;
+
+  --offset: 1px;
+
+  text-shadow: 
+    calc(var(--offset) * -1) calc(var(--offset) * -1) black,
+    calc(var(--offset) * -1) 0 black,
+    calc(var(--offset) * -1) var(--offset) black,
+    0 var(--offset) black,
+    var(--offset) var(--offset) black,
+    var(--offset) 0 black,
+    var(--offset) calc(var(--offset) * -1) black,
+    0 calc(var(--offset) * -1) black;
+}
+
+img {
+  height: 70px;
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-bottom: 5px;
+
+  z-index: 1;
+}

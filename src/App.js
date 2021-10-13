@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import MemeGenerator from './components/MemeGenerator';
+import pepeImg from './images/pepe.png';
 
 export default class App extends React.Component {
   state = {
@@ -15,6 +16,10 @@ export default class App extends React.Component {
 
     return (
       <div className="App">
+        <header>
+          <h1>MEME GENERAT<img src={pepeImg} alt='pepe the frogs face' />R</h1>
+
+        </header>
         {imgsData && <MemeGenerator {...memeGeneratorProps} />}
       </div>
     );
