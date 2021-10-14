@@ -9,7 +9,7 @@
 
   position: relative;
 
-  overflow: hidden;
+  overflow: hidden; /*Even though text that is dragged will not overflow, text which font-size has been changed to a bigger size might.*/
 }
 .CreateMemeImg .CreateMemeText {
   margin: 0;
