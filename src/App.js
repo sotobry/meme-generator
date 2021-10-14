@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import MemeGenerator from './components/MemeGenerator';
+import MemeItem from './components/MemeItem';
 import pepeImg from './images/pepe.png';
 
 export default class App extends React.Component {
@@ -28,20 +29,10 @@ export default class App extends React.Component {
         </header>
         {imgsData && <MemeGenerator {...memeGeneratorProps} />}
         {userMemes.length > 0 && userMemes.map(meme => {
-          const { imgIdx, texts, fontIdx, fontSize, isAllCaps, pos } = meme;
+          console.log({ meme });
+          const memeItemProps = { ...meme };
           return (
-            <ul>
-              <li>imgIdx: {imgIdx} ({typeof imgIdx})</li>
-              <li>text1: {texts.text1} ({typeof texts.text1})</li>
-              <li>text2: {texts.text2} ({typeof texts.text2})</li>
-              <li>fontIdx: {fontIdx} ({typeof fontIdx})</li>
-              <li>fontSize: {fontSize} ({typeof fontSize})</li>
-              <li>isAllCaps: {String(isAllCaps)} ({typeof isAllCaps})</li>
-              <li>top1: {pos.pos1.top} ({typeof pos.pos1.top})</li>
-              <li>left1: {pos.pos1.left} ({typeof pos.pos1.left})</li>
-              <li>top2: {pos.pos2.top} ({typeof pos.pos2.top})</li>
-              <li>left2: {pos.pos2.left} ({typeof pos.pos2.left})</li>
-            </ul>
+            <MemeItem key={Math.random()}{...memeItemProps} />
           )
         })}
       </div>
@@ -55,6 +46,6 @@ export default class App extends React.Component {
   };
 
   componentDidUpdate = () => {
-    console.log({ userMemes: this.state.userMemes })
+    // console.log({ userMemes: this.state.userMemes });
   };
 };
