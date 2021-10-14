@@ -28,9 +28,9 @@ export default class App extends React.Component {
 
         </header>
         {imgsData && <MemeGenerator {...memeGeneratorProps} />}
-        {userMemes.length > 0 && userMemes.map(meme => {
+        {imgsData && userMemes.map(meme => {
           console.log({ meme });
-          const memeItemProps = { ...meme };
+          const memeItemProps = { ...meme, imgsData };
           return (
             <MemeItem key={Math.random()}{...memeItemProps} />
           )

@@ -58,7 +58,7 @@ const CreateMemeText = props => {
       draggable='true'
       onDragStart={startDrag}
       onDragEnd={endDrag}
-    >{text} {top} {left}</p>
+    >{text}</p>
   );
 };
 
