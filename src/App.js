@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
+import Header from './components/Header';
 import MemeGenerator from './components/MemeGenerator';
 import MemeItem from './components/MemeItem';
-import pepeImg from './images/pepe.png';
 
 export default class App extends React.Component {
   state = {
@@ -23,18 +23,19 @@ export default class App extends React.Component {
 
     return (
       <div className="App">
-        <header>
-          <h1>MEME GENERAT<img src={pepeImg} alt='pepe the frogs face' />R</h1>
-
-        </header>
-        {imgsData && <MemeGenerator {...memeGeneratorProps} />}
-        {imgsData && userMemes.map(meme => {
-          console.log({ meme });
-          const memeItemProps = { ...meme, imgsData };
-          return (
-            <MemeItem key={Math.random()}{...memeItemProps} />
-          )
-        })}
+        <Header />
+        {imgsData &&
+          <>
+            <MemeGenerator {...memeGeneratorProps} />
+            {userMemes.map(meme => {
+              console.log({ meme });
+              const memeItemProps = { ...meme, imgsData };
+              return (
+                <MemeItem key={Math.random()}{...memeItemProps} />
+              )
+            })}
+          </>
+        }
       </div>
     );
   };
