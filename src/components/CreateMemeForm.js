@@ -33,8 +33,8 @@ const CreateMemeForm = props => {
       onSubmit={handleSubmit}
     >
       <div className='field'>
-        <label>Select image</label>
-        <select name='imgIdx'
+        <label for='imgIdx'>Select image</label>
+        <select name='imgIdx' id='imgIdx'
           value={imgIdx}
           onChange={handleChange}
         >
@@ -49,8 +49,8 @@ const CreateMemeForm = props => {
         </button>
       </div>
       <div className='field'>
-        <label>Enter text</label>
-        <input name='text1' required
+        <label for='text1'>Enter text</label>
+        <input name='text1' id='text1' required
           placeholder='Text line 1'
           value={text1}
           onChange={handleChange}
@@ -63,16 +63,16 @@ const CreateMemeForm = props => {
         </button>
       </div>
       <div className='field'>
-        <label>Enter text</label>
-        <input name='text2'
+        <label for='text2'>Enter text</label>
+        <input name='text2' id='text2'
           placeholder='Text line 2'
           value={text2}
           onChange={handleChange}
         />
       </div>
       <div className='field font-family'>
-        <label>Select font</label>
-        <select name='fontIdx'
+        <label for='fontIdx'>Select font</label>
+        <select name='fontIdx' id='fontIdx'
           value={fontIdx}
           onChange={handleChange}
         >
@@ -83,10 +83,10 @@ const CreateMemeForm = props => {
         </select>
       </div>
       <div className='field font-size'>
-        <label>Enter font size</label>
+        <label for='fontSize'>Enter font size</label>
         <div>
           <input type='number'
-            name='fontSize'
+            name='fontSize' id='fontSize'
             min='6'
             max='96'
             step='6'
