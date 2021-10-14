@@ -6,26 +6,26 @@ import './MemeGenerator.css';
 
 export default class MemeGenerator extends React.Component {
   state = {
-    imgIdx: 0,
+    imgIdx: 23,
     texts: { text1: '', text2: '' },
     fontIdx: 0,
     fontSize: 24,
     isAllCaps: false,
     pos: {
-      pos1: { top: 0, left: 0 },
-      pos2: { top: 20, left: 20 },
+      pos1: { top: '0%', left: '0%' },
+      pos2: { top: '5%', left: '5%' },
     }
   };
 
   resetState = () => this.setState({
-    imgIdx: 0,
+    imgIdx: 23,
     texts: { text1: '', text2: '' },
     fontIdx: 0,
     fontSize: 24,
     isAllCaps: false,
     pos: {
-      pos1: { top: 0, left: 0 },
-      pos2: { top: 20, left: 20 },
+      pos1: { top: '0%', left: '0%' },
+      pos2: { top: '5%', left: '5%' },
     }
   });
 
@@ -33,9 +33,12 @@ export default class MemeGenerator extends React.Component {
     this.setState(state =>
       ({ 'texts': { ...state.texts, [name]: value } }));
 
-  setPos = (id, { top, left }) => this.setState(state => ({
-    pos: { ...state.pos, [id]: { top, left } }
-  }));
+  setPos = (elem, { top, left }) => {
+    const { id } = elem;
+    this.setState(state => ({
+      pos: { ...state.pos, [id]: { top, left } }
+    }));
+  };
 
   handleChange = ({ currentTarget: { name, value } }) => {
     const number = Number.parseInt(value, 10);

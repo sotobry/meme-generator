@@ -1,6 +1,6 @@
 import './CreateMemeText.css';
 import fontsData from '../data/fonts';
-const { min, max } = Math;
+const { floor, min, max } = Math;
 
 const CreateMemeText = props => {
   const { id, text, fontIdx, fontSize, isAllCaps, top, left, setPos } = props;
@@ -33,11 +33,11 @@ const CreateMemeText = props => {
     const maxTop = imgContainerHeight - memeTextHeight - 2 * imgContainerBorder;
     const maxLeft = imgContainerWidth - memeTextWidth - 2 * imgContainerBorder;
 
-    const top = min(max(cursorY - imgContainerY - imgContainerBorder - memeTextHeight / 2, minTop), maxTop);
-    const left = min(max(cursorX - imgContainerX - imgContainerBorder - memeTextWidth / 2, minLeft), maxLeft);
+    const top = `${min(max(cursorY - imgContainerY - imgContainerBorder - memeTextHeight / 2, minTop), maxTop) / (imgContainerHeight - 2 * imgContainerBorder) * 100}%`;
 
-    const { id } = memeText;
-    setPos(id, { top, left });
+    const left = `${min(max(cursorX - imgContainerX - imgContainerBorder - memeTextWidth / 2, minLeft), maxLeft) / (imgContainerWidth - 2 * imgContainerBorder) * 100}%`;
+
+    setPos(memeText, { top, left });
 
     memeText.classList.remove('isDragging');
   };
@@ -48,7 +48,8 @@ const CreateMemeText = props => {
     fontFamily: font.family,
     fontWeight: font.weight,
     fontSize,
-    top, left
+    top, left,
+    lineHeight: 1
   };
 
   return (
@@ -57,7 +58,7 @@ const CreateMemeText = props => {
       draggable='true'
       onDragStart={startDrag}
       onDragEnd={endDrag}
-    >{text}</p>
+    >{text} {top} {left}</p>
   );
 };
 
