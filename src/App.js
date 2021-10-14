@@ -7,7 +7,7 @@ import pepeImg from './images/pepe.png';
 export default class App extends React.Component {
   state = {
     imgsData: null,
-    userMemes: []
+    userMemes: JSON.parse(localStorage.getItem('userMemes')) || []
   };
 
   addMeme = data => {
@@ -47,5 +47,9 @@ export default class App extends React.Component {
 
   componentDidUpdate = () => {
     // console.log({ userMemes: this.state.userMemes });
+    const updateLocalStorage = userMemes => {
+      localStorage.setItem('userMemes', JSON.stringify(userMemes));
+    };
+    updateLocalStorage(this.state.userMemes);
   };
 };
