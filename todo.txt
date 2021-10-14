@@ -1,3 +1,38 @@
 _connect labels to their input elements.
+
 _check if you need the 'randBtn' class for the button.
+
 _in the CreateMemeForm.js, in the toggle-all-caps button element, move the styling to a css file.
+
+_make the text not overflow when the font-size is too big.
+
+_add borderSize prop to CreateMemeText component.
+
+_get rid of the plus cursor icon when dragging.
+
+_give the CreateMemeImg some padding so that the text doesn't touch the border.
+
+_Create a Header component
+
+_Create a Header.css file and move the styling there.
+
+_change the height of the app so that you don't need to scroll.
+
+_if I change the state of the Meme Generator of text and pos to arrays, I could use .map on the CreateMemeImg to add the multiple CreateMemeText components.
+
+_for the setPos function, maybe instead of using an id, you can use a custom attribute called something similar to 'name';
+
+_Add the option for the meme text to be all black, all white, black with white borders, or white with black borders.
+
+_Add a footer.
+
+_Come up with a good key for the MemeItem components.
+
+_Create helperFunction.js file and put there all the helper functions.
+  _updateLocalStorage
+
+_Move lineHeight css property of the CreateMemeText component to css file.
+
+_fix bug in which the text in the meme list overflows the image is the position is the maxTop.
+
+_Make the font-size be relative instead of absolute.
