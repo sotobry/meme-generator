@@ -8,6 +8,8 @@
   background-position: center;
 
   position: relative;
+
+  overflow: hidden;
 }
 .CreateMemeImg .CreateMemeText {
   margin: 0;
