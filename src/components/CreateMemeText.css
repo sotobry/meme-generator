@@ -12,7 +12,9 @@
     0 calc(var(--offset) * -1) black;
 
   cursor: move;
+
+  line-height: 1
 }
 .CreateMemeText.isDragging {
-  opacity: 0.01;
+  opacity: 0.01; /*If you set the opacity to 0, the text will become invisible when dragging.*/
 }

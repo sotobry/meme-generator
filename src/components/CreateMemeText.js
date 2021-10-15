@@ -49,7 +49,6 @@ const CreateMemeText = props => {
     fontWeight: font.weight,
     fontSize,
     top, left,
-    lineHeight: 1
   };
 
   return (
