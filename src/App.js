@@ -4,6 +4,8 @@ import Header from './components/Header';
 import MemeGenerator from './components/MemeGenerator';
 import MemeItem from './components/MemeItem';
 
+import { updateLocalStorage } from './helperFunctions';
+
 export default class App extends React.Component {
   state = {
     imgsData: null,
@@ -46,11 +48,5 @@ export default class App extends React.Component {
       .then(({ data: { memes: imgsData } }) => this.setState({ imgsData }));
   };
 
-  componentDidUpdate = () => {
-    // console.log({ userMemes: this.state.userMemes });
-    const updateLocalStorage = userMemes => {
-      localStorage.setItem('userMemes', JSON.stringify(userMemes));
-    };
-    updateLocalStorage(this.state.userMemes);
-  };
+  componentDidUpdate = () => updateLocalStorage(this.state.userMemes);
 };
