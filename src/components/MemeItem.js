@@ -1,8 +1,11 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
+
 import './MemeItem.css';
 import fontsData from '../data/fonts';
 
 const MemeItem = props => {
-  const { imgIdx, texts: { text1, text2 }, fontIdx, fontSize, isAllCaps, pos: { pos1, pos2 }, imgsData } = props;
+  const { imgIdx, texts: { text1, text2 }, fontIdx, fontSize, isAllCaps, pos: { pos1, pos2 }, imgsData, deleteMeme, id } = props;
 
   const memeImgStyle = {
     backgroundImage: `url(${imgsData[imgIdx].url})`
@@ -24,6 +27,8 @@ const MemeItem = props => {
     left: pos2.left
   };
 
+  const handleClick = () => deleteMeme(id);
+
   return (
     <>
       <div className='MemeItem'>
@@ -31,6 +36,9 @@ const MemeItem = props => {
           <p style={memeText1Style}>{text1}</p>
           <p style={memeText2Style}>{text2}</p>
         </div>
+        <button type='button' onClick={handleClick}>
+          <FontAwesomeIcon icon={faTrashAlt} />
+        </button>
       </div>
       <ul>
         <li>fontSize: {fontSize} ({typeof fontSize})</li>

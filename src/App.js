@@ -15,10 +15,15 @@ export default class App extends React.Component {
   addMeme = data => {
     const { imgIdx, texts, fontIdx, fontSize, isAllCaps, pos } = data;
 
-    this.setState(state => ({ userMemes: [{ imgIdx, texts, fontIdx, fontSize, isAllCaps, pos }, ...state.userMemes] }));
+    this.setState(state => ({ userMemes: [{ id: Math.random(), imgIdx, texts, fontIdx, fontSize, isAllCaps, pos }, ...state.userMemes] }));
+  };
+  deleteMeme = id => {
+    this.setState(state => ({
+      userMemes: state.userMemes.filter(meme => meme.id !== id)
+    }));
   };
   render = () => {
-    const { state, addMeme } = this;
+    const { state, addMeme, deleteMeme } = this;
     const { imgsData, userMemes } = state;
 
     const memeGeneratorProps = { ...state, addMeme };
@@ -29,12 +34,13 @@ export default class App extends React.Component {
         {imgsData &&
           <>
             <MemeGenerator {...memeGeneratorProps} />
+
             {userMemes.map(meme => {
               console.log({ meme });
-              const memeItemProps = { ...meme, imgsData };
+              const memeItemProps = { ...meme, imgsData, deleteMeme };
               return (
                 <MemeItem key={Math.random()}{...memeItemProps} />
-              )
+              );
             })}
           </>
         }
