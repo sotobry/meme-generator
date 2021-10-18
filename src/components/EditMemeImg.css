@@ -1,11 +1,4 @@
-.MemeItem {
-  background-color: cyan;
-  display: flex;
-  align-items: center;
-
-  margin-bottom: 10px;
-}
-.MemeItem .memeImg {
+.EditMemeImg {
   background-color: fuchsia;
   
   width: 250px;
@@ -18,8 +11,10 @@
   background-position: center;
 
   position: relative;
+
+  overflow: hidden;
 }
-.MemeItem .memeImg p {
+.EditMemeImg p {
   background-color: red;
   
   margin:0;
@@ -38,6 +33,4 @@
     var(--offset) 0 black,
     var(--offset) calc(var(--offset) * -1) black,
     0 calc(var(--offset) * -1) black;
-
-  
 }

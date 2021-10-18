@@ -1,11 +1,11 @@
-import './CreateMemeText.css';
+import './EditMemeText.css';
 import fontsData from '../data/fonts';
 const {
   // floor, 
   min, max
 } = Math;
 
-const CreateMemeText = props => {
+const EditMemeText = props => {
   const { id, text, fontIdx, fontSize, isAllCaps, top, left, setPos } = props;
 
   const startDrag = ({ currentTarget }) => currentTarget.classList.add('isDragging');
@@ -45,12 +45,14 @@ const CreateMemeText = props => {
     memeText.classList.remove('isDragging');
   };
 
+  const createMemeImgHeight = 500;
+  const memeImgHeight = 250;
   const font = fontsData[fontIdx];
   const style = {
     textTransform: isAllCaps ? 'uppercase' : 'none',
     fontFamily: font.family,
     fontWeight: font.weight,
-    fontSize,
+    fontSize: fontSize * memeImgHeight / createMemeImgHeight,
     top, left,
   };
 
@@ -64,4 +66,4 @@ const CreateMemeText = props => {
   );
 };
 
-export default CreateMemeText;
+export default EditMemeText;

@@ -3,13 +3,17 @@
   height: 500px;
   border: 1px solid white;
 
+  background-color: fuchsia;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 
   position: relative;
 
-  overflow: hidden; /*Even though text that is dragged will not overflow, text which font-size has been changed to a bigger size might.*/
+  overflow: hidden;
+}
+.CreateMemeForm button[name="toggleAllCapsBtn"] span {
+  font-weight: 900;
 }
 .CreateMemeImg .CreateMemeText {
   margin: 0;

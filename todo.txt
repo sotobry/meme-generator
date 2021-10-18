@@ -1,38 +1,50 @@
-_connect labels to their input elements.
+_Add a footer.
+_rename the className attribute of the EditMemeForm from CreateMemeForm to EditMemeForm.
+_Style the EditMemeForm
 
-_check if you need the 'randBtn' class for the button.
-
-_in the CreateMemeForm.js, in the toggle-all-caps button element, move the styling to a css file.
-
-_make the text not overflow when the font-size is too big.
 
 _add borderSize prop to CreateMemeText component.
-
-_get rid of the plus cursor icon when dragging.
-
 _give the CreateMemeImg some padding so that the text doesn't touch the border.
-
-_Create a Header component
-
-_Create a Header.css file and move the styling there.
+_fix bug in which the text in the meme list overflows the image is the position is the maxTop.
 
 _change the height of the app so that you don't need to scroll.
 
-_if I change the state of the Meme Generator of text and pos to arrays, I could use .map on the CreateMemeImg to add the multiple CreateMemeText components.
+_Change both functions of setText to receive an element instead of an event.
 
-_for the setPos function, maybe instead of using an id, you can use a custom attribute called something similar to 'name';
+_The MemeImg and EditMemeImg components have similar css, make the styling be on the parent maybe?
 
 _Add the option for the meme text to be all black, all white, black with white borders, or white with black borders.
 
-_Add a footer.
+_get rid of the plus cursor icon when dragging.
 
-_Come up with a good key for the MemeItem components.
+_for the setPos function, maybe instead of using an id, you can use a custom attribute called something similar to 'name';
 
-_Create helperFunction.js file and put there all the helper functions.
-  _updateLocalStorage
+_if I change the state of the Meme Generator of text and pos to arrays, I could use .map on the CreateMemeImg to add the multiple CreateMemeText components.
 
-_Move lineHeight css property of the CreateMemeText component to css file.
-
-_fix bug in which the text in the meme list overflows the image is the position is the maxTop.
+_Change the id of the memes inside the userMemes state to something better than Math.random().
 
 _Make the font-size be relative instead of absolute.
+
+_make the user choose the number of text field he/she wants.
+
+_Make the number of default text inputs vary depending on the meme.
+  _Change initial text location depending on the meme.
+
+_Create the MemeList component.
+
+_Generate new image from meme creation.
+  _Make new image downloadable.
+
+_Clear input fields suggestions before demoing it.
+
+_Add two or three demo memes when the user has 0 memes.
+
+_Disable toggle all caps button when there is no text
+
+_Style the all caps button so that the capital A is not bolded when all caps is on.
+
+_find a way to reuse the create-meme form.
+
+_Make an added-meme animation.
+
+_make it responsive.

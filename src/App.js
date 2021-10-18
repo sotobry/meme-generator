@@ -15,15 +15,25 @@ export default class App extends React.Component {
   addMeme = data => {
     const { imgIdx, texts, fontIdx, fontSize, isAllCaps, pos } = data;
 
-    this.setState(state => ({ userMemes: [{ id: Math.random(), imgIdx, texts, fontIdx, fontSize, isAllCaps, pos }, ...state.userMemes] }));
+    this.setState(state => ({ userMemes: [{ id: String(Math.random()), imgIdx, texts, fontIdx, fontSize, isAllCaps, pos }, ...state.userMemes] }));
   };
   deleteMeme = id => {
     this.setState(state => ({
       userMemes: state.userMemes.filter(meme => meme.id !== id)
     }));
   };
+
+  saveMemeEdits = editedMeme => {
+    console.log('saveMemeEdits function called.');
+    const { id } = editedMeme;
+
+    this.setState(state => ({
+      userMemes: state.userMemes.map(meme => meme.id === id ? editedMeme : meme)
+    }));
+  };
+
   render = () => {
-    const { state, addMeme, deleteMeme } = this;
+    const { state, addMeme, deleteMeme, saveMemeEdits } = this;
     const { imgsData, userMemes } = state;
 
     const memeGeneratorProps = { ...state, addMeme };
@@ -36,10 +46,9 @@ export default class App extends React.Component {
             <MemeGenerator {...memeGeneratorProps} />
 
             {userMemes.map(meme => {
-              console.log({ meme });
-              const memeItemProps = { ...meme, imgsData, deleteMeme };
+              const memeItemProps = { ...meme, imgsData, deleteMeme, saveMemeEdits };
               return (
-                <MemeItem key={Math.random()}{...memeItemProps} />
+                <MemeItem key={meme.id}{...memeItemProps} />
               );
             })}
           </>

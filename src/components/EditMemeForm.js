@@ -1,13 +1,11 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRandom } from '@fortawesome/free-solid-svg-icons';
+import React from 'react';
 
-import './CreateMemeForm.css';
+// import './CreateMemeForm.css';
 
 import fontsData from '../data/fonts';
 
-const CreateMemeForm = props => {
-  const { resetState, setTexts, handleChange: superHandleChange, setRandomImgIdx, toggleAllCaps, addMeme } = props;
-  const { imgsData, imgIdx, texts, fontIdx, fontSize, isAllCaps, pos } = props;
+const EditMemeForm = props => {
+  const { id, imgsData, imgIdx, texts, fontIdx, fontSize, isAllCaps, pos, resetState, setTexts, toggleAllCaps, setEditModeTo, handleChange: superHandleChange, saveMemeEdits } = props;
   const { text1, text2 } = texts;
 
   const handleChange = ev => {
@@ -16,17 +14,22 @@ const CreateMemeForm = props => {
     else superHandleChange(ev);
   };
 
-  const handleClick = ev => {
-    const { name } = ev.currentTarget;
-    if (name === 'randImgBtn') setRandomImgIdx();
-    else if (name === 'toggleAllCapsBtn') toggleAllCaps();
+  const cancelEdits = () => {
+    resetState();
+    setEditModeTo(false);
   };
 
   const handleSubmit = ev => {
     ev.preventDefault();
-    const data = { imgIdx, texts, fontIdx, fontSize, isAllCaps, pos };
-    addMeme(data);
-    // resetState();
+    saveMemeEdits({ id, imgIdx, texts, fontIdx, fontSize, isAllCaps, pos });
+    setEditModeTo(false);
+  };
+
+  const handleClick = ev => {
+    const { name } = ev.currentTarget;
+    console.log({ name });
+    if (name === 'toggleAllCapsBtn') toggleAllCaps();
+    else if (name === 'cancelBtn') cancelEdits();
   };
 
   return (
@@ -42,12 +45,6 @@ const CreateMemeForm = props => {
           {imgsData.map(({ id, name }, i) =>
             <option key={id} value={i}>{name}</option>)}
         </select>
-        <button type='button'
-          name='randImgBtn'
-          onClick={handleClick}
-        >
-          <FontAwesomeIcon icon={faRandom} />
-        </button>
       </div>
       <div className='field'>
         <label htmlFor='text1'>Enter text</label>
@@ -96,9 +93,14 @@ const CreateMemeForm = props => {
           /> px
         </div>
       </div>
-      <button className='addMemeBtn'>Add Meme</button>
+      <button name='cancelBtn' type='button'
+        onClick={handleClick}
+      >Cancel</button>
+      <button name='saveBtn'
+      // onClick={handleClick}
+      >Save Changes</button>
     </form>
   );
 };
 
-export default CreateMemeForm;
+export default EditMemeForm;
