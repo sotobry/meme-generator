@@ -1,6 +1,6 @@
 import React from 'react';
 
-// import './CreateMemeForm.css';
+import './EditMemeForm.css';
 
 import fontsData from '../data/fonts';
 
@@ -33,7 +33,7 @@ const EditMemeForm = props => {
   };
 
   return (
-    <form className='CreateMemeForm'
+    <form className='EditMemeForm'
       onSubmit={handleSubmit}
     >
       <div className='field'>
@@ -97,7 +97,6 @@ const EditMemeForm = props => {
         onClick={handleClick}
       >Cancel</button>
       <button name='saveBtn'
-      // onClick={handleClick}
       >Save Changes</button>
     </form>
   );

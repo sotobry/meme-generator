@@ -1,5 +1,5 @@
 .MemeImg {
-  background-color: fuchsia;
+  /* background-color: fuchsia; */
   
   width: 250px;
   height: 250px;
@@ -15,7 +15,7 @@
   overflow: hidden;
 }
 .MemeImg p {
-  background-color: red;
+  /* background-color: red; */
   
   margin:0;
   line-height: 1;

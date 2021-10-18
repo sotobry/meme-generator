@@ -3,7 +3,7 @@
   height: 500px;
   border: 1px solid white;
 
-  background-color: fuchsia;
+  /* background-color: fuchsia; */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -18,5 +18,5 @@
 .CreateMemeImg .CreateMemeText {
   margin: 0;
   position: absolute;
-  background-color: red;
+  /* background-color: red; */
 }

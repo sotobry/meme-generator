@@ -1,0 +1,38 @@
+.EditMemeForm {
+  margin-right: 30px;
+  /* background-color: orange; */
+  margin-left: 20px;
+}
+.EditMemeForm .field {
+  margin-bottom: 5px;
+  display: flex;
+}
+.EditMemeForm label {
+  width: 110px;
+  text-align: right;
+  margin-right: 10px;
+}
+.EditMemeForm input,
+.EditMemeForm select {
+  width: 175px;
+}
+.EditMemeForm input[name='text2'],
+.EditMemeForm select[name='imgIdx'] {
+  flex-grow: 1;
+}
+.EditMemeForm .font-family.field select {
+  width: 110px;
+}
+.EditMemeForm .font-size.field input {
+  width: 50px;
+}
+.EditMemeForm .field button {
+  width: 30px;
+  padding: 0;
+  margin-left: 5px;
+}
+.EditMemeForm [name='cancelBtn'] {
+  margin-top: 5px;
+  margin-left: 120px;
+  margin-right: 5px;
+}

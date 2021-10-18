@@ -9,11 +9,11 @@ export default class MemeGenerator extends React.Component {
     imgIdx: 23,
     texts: { text1: '', text2: '' },
     fontIdx: 0,
-    fontSize: 24,
+    fontSize: 42,
     isAllCaps: false,
     pos: {
       pos1: { top: '0%', left: '0%' },
-      pos2: { top: '5%', left: '5%' },
+      pos2: { top: '4%', left: '4%' },
     }
   };
 
@@ -21,11 +21,11 @@ export default class MemeGenerator extends React.Component {
     imgIdx: 23,
     texts: { text1: '', text2: '' },
     fontIdx: 0,
-    fontSize: 24,
+    fontSize: 42,
     isAllCaps: false,
     pos: {
       pos1: { top: '0%', left: '0%' },
-      pos2: { top: '5%', left: '5%' },
+      pos2: { top: '4%', left: '4%' },
     }
   });
 

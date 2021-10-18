@@ -1,5 +1,5 @@
 .EditMemeImg {
-  background-color: fuchsia;
+  /* background-color: fuchsia; */
   
   width: 250px;
   height: 250px;
@@ -15,7 +15,9 @@
   overflow: hidden;
 }
 .EditMemeImg p {
-  background-color: red;
+  /* background-color: red; */
+  /* border: 1px white dashed; */
+  opacity: 0.7;
   
   margin:0;
   line-height: 1;
