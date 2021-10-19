@@ -1,0 +1,11 @@
+.FutureFeaturesList {
+  /* background-color: fuchsia; */
+  flex-grow: 1;
+  line-height: 1.5;
+  width: 350px;
+  /* align-self: center; */
+  padding-top: 20px;
+}
+.FutureFeaturesList li {
+  margin-bottom: 20px;
+}

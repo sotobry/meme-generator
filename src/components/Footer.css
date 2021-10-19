@@ -8,7 +8,7 @@
 }
 .Footer {
   background-color: gray;
-  height: 50px;
+  min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,7 +23,7 @@
   color: red;
 }
 .Footer a {
-  margin: 0 5px;
+  margin: 0 10px;
   font-size: 30px;
 }
 .Footer a:visited {

@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
 
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .MemeItem button[name='editBtn'] {
   margin-left: 20px;
