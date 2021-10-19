@@ -13,7 +13,7 @@ const Footer = () => {
         <a href='https://github.com/sotobry'>
           <FontAwesomeIcon icon={faGithub} />
         </a>
-        <a href='https://www.linkedin.com/in/bryanns/'>
+        <a href='https://www.linkedin.com/in/sotobry/'>
           <FontAwesomeIcon icon={faLinkedin} />
         </a>
       </p>
