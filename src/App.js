@@ -9,7 +9,10 @@ import { updateLocalStorage } from './helperFunctions';
 export default class App extends React.Component {
   state = {
     imgsData: null,
-    userMemes: JSON.parse(localStorage.getItem('userMemes')) || []
+    userMemes: JSON.parse(localStorage.getItem('userMemes')) || [],
+    view: 'memeGeneratorView'
+    // view: 'userMemesView'
+    // view: 'futureFeaturesView'
   };
 
   addMeme = data => {
@@ -32,25 +35,47 @@ export default class App extends React.Component {
     }));
   };
 
-  render = () => {
-    const { state, addMeme, deleteMeme, saveMemeEdits } = this;
-    const { imgsData, userMemes } = state;
+  setViewTo = view => this.setState({ view });
 
+  render = () => {
+    const { state, addMeme, deleteMeme, saveMemeEdits, setViewTo } = this;
+    const { imgsData, userMemes, view } = state;
+
+    const headerProps = { setViewTo };
     const memeGeneratorProps = { ...state, addMeme };
 
     return (
       <div className="App">
-        <Header />
+        <Header {...headerProps} />
         {imgsData &&
           <>
-            <MemeGenerator {...memeGeneratorProps} />
+            {view === 'memeGeneratorView' &&
+              <MemeGenerator {...memeGeneratorProps} />}
 
-            {userMemes.map(meme => {
-              const memeItemProps = { ...meme, imgsData, deleteMeme, saveMemeEdits };
-              return (
-                <MemeItem key={meme.id}{...memeItemProps} />
-              );
-            })}
+            {view === 'userMemesView' &&
+              userMemes.map(meme => {
+                const memeItemProps = { ...meme, imgsData, deleteMeme, saveMemeEdits };
+                return (
+                  <MemeItem key={meme.id}{...memeItemProps} />
+                );
+              })}
+
+            {view === 'futureFeaturesView' &&
+              <ul>
+                <li>Allow the user to have multiple text lines, not just 2 lines.</li>
+
+                <li>Allow the user to increase or decrease the size of the textbox and let the font size be dictated by its dimensions.</li>
+
+                <li>Allow the user to choose between black or white text.</li>
+
+                <li>Allow the user to choose between outlined and not outlined text.</li>
+
+                <li>Allow the user to increase or decrease the size of the textbox and let the font size be dictated by its dimensions.</li>
+
+                <li>Allow the user to download their meme as a png image.</li>
+
+                <li>Make the app more responsive.</li>
+              </ul>}
           </>
         }
       </div>

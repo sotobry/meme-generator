@@ -1,5 +1,6 @@
+_Finish Header.
+_Add a view state to the app component.
 _Add a footer.
-_rename the className attribute of the EditMemeForm from CreateMemeForm to EditMemeForm.
 _Style the EditMemeForm
 
 
@@ -48,3 +49,8 @@ _find a way to reuse the create-meme form.
 _Make an added-meme animation.
 
 _make it responsive.
+
+_In Header.js, change the list items classes from "...View" to "...Link" or something like that.
+
+Create a futureFeatures component.
+

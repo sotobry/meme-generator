@@ -3,8 +3,10 @@
   background-color: rgb(230, 230, 230);
 
   padding-left: 20px;
-  height: 100px;
+  padding-right: 20px;
+  height: 75px;
   display: flex;
+  justify-content: space-between;
 
   border-bottom: #888 1px solid;
 }
@@ -38,4 +40,36 @@
   margin-bottom: 5px;
 
   z-index: 1;
+}
+.Header nav {
+  /* background-color: yellow; */
+
+}
+.Header ul {
+  /* background-color: orange; */
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  width: 600px;
+  list-style-type: none;
+
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: space-between; */
+  justify-content: space-evenly;
+}
+.Header li {
+  /* background-color: red; */
+  padding-bottom: 5px;
+
+  width: 175px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Header li:hover {
+  font-weight: 700;
 }
