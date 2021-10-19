@@ -3,7 +3,7 @@ import './App.css';
 import FutureFeaturesList from './components/FutureFeaturesList';
 import Header from './components/Header';
 import MemeGenerator from './components/MemeGenerator';
-import MemeItem from './components/MemeItem';
+import MemeList from './components/MemeList';
 
 import { updateLocalStorage } from './helperFunctions';
 
@@ -42,6 +42,7 @@ export default class App extends React.Component {
 
     const headerProps = { setViewTo };
     const memeGeneratorProps = { ...state, addMeme };
+    const memeListProps = { imgsData, userMemes, deleteMeme, saveMemeEdits };
 
     return (
       <div className="App">
@@ -52,17 +53,15 @@ export default class App extends React.Component {
               <MemeGenerator {...memeGeneratorProps} />}
 
             {view === 'userMemesView' &&
-              userMemes.map(meme => {
-                const memeItemProps = { ...meme, imgsData, deleteMeme, saveMemeEdits };
-                return (
-                  <MemeItem key={meme.id}{...memeItemProps} />
-                );
-              })}
+              <MemeList {...memeListProps} />}
 
             {view === 'futureFeaturesView' &&
               <FutureFeaturesList />}
           </>
         }
+        <footer>
+          <p>Made with love and coffee by <a>Bryann Sotomayor</a></p>
+        </footer>
       </div>
     );
   };
