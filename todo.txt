@@ -1,8 +1,4 @@
-Create a futureFeatures component.
-_Add a view state to the app component.
-_Add a footer.
 _Style the EditMemeForm
-
 
 _add borderSize prop to CreateMemeText component.
 _give the CreateMemeImg some padding so that the text doesn't touch the border.
@@ -51,3 +47,5 @@ _Make an added-meme animation.
 _make it responsive.
 
 _In Header.js, change the list items classes from "...View" to "...Link" or something like that.
+
+_In the meme generator component, make the image be to the left and the form to the right.
