@@ -26,7 +26,7 @@ const CreateMemeForm = props => {
     ev.preventDefault();
     const data = { imgIdx, texts, fontIdx, fontSize, isAllCaps, pos };
     addMeme(data);
-    // resetState();
+    resetState();
   };
 
   return (
