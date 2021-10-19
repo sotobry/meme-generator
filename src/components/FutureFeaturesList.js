@@ -10,8 +10,6 @@ const FutureFeaturesList = () =>
 
     <li>Allow the user to choose between outlined and not outlined text.</li>
 
-    <li>Allow the user to increase or decrease the size of the textbox and let the font size be dictated by its dimensions.</li>
-
     <li>Allow the user to download their meme as a png image.</li>
 
     <li>Make app more responsive.</li>
