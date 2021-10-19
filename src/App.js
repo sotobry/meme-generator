@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Footer from './components/Footer';
 import FutureFeaturesList from './components/FutureFeaturesList';
 import Header from './components/Header';
 import MemeGenerator from './components/MemeGenerator';
@@ -59,9 +60,7 @@ export default class App extends React.Component {
               <FutureFeaturesList />}
           </>
         }
-        <footer>
-          <p>Made with love and coffee by <a>Bryann Sotomayor</a></p>
-        </footer>
+        <Footer />
       </div>
     );
   };
