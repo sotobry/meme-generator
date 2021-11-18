@@ -1,72 +1,106 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CreateMemeForm from './CreateMemeForm';
 import CreateMemeImg from './CreateMemeImg';
 
 import './MemeGenerator.css';
 
-export default class MemeGenerator extends React.Component {
-  state = {
-    imgIdx: 23,
-    texts: { text1: '', text2: '' },
+const MemeGenerator = props => {
+  const [formData, setFormDataTo] = useState({
+    imgIdx: '23',
+    texts: {
+      text1: '',
+      text2: ''
+    },
     fontIdx: 0,
     fontSize: 42,
     isAllCaps: false,
     pos: {
-      pos1: { top: '0%', left: '0%' },
-      pos2: { top: '4%', left: '4%' },
-    }
-  };
-
-  resetState = () => this.setState({
-    imgIdx: 23,
-    texts: { text1: '', text2: '' },
-    fontIdx: 0,
-    fontSize: 42,
-    isAllCaps: false,
-    pos: {
-      pos1: { top: '0%', left: '0%' },
-      pos2: { top: '4%', left: '4%' },
+      pos1: {
+        top: '0%',
+        left: '0%'
+      },
+      pos2: {
+        top: '4%',
+        left: '4%'
+      },
     }
   });
 
-  setTexts = ({ currentTarget: { name, value } }) =>
-    this.setState(state =>
-      ({ 'texts': { ...state.texts, [name]: value } }));
+  const resetState = () => setFormDataTo({
+    imgIdx: '23',
+    texts: {
+      text1: '',
+      text2: ''
+    },
+    fontIdx: 0,
+    fontSize: 42,
+    isAllCaps: false,
+    pos: {
+      pos1: {
+        top: '0%',
+        left: '0%'
+      },
+      pos2: {
+        top: '4%',
+        left: '4%'
+      },
+    }
+  });
 
-  setPos = (elem, { top, left }) => {
+  const setTexts = ({ currentTarget: { name, value } }) =>
+    setFormDataTo(formData => ({
+      ...formData,
+      texts: {
+        ...formData.texts,
+        [name]: value
+      }
+    }));
+
+  const setPos = (elem, { top, left }) => {
     const { id } = elem;
-    this.setState(state => ({
-      pos: { ...state.pos, [id]: { top, left } }
+    setFormDataTo(formData => ({
+      ...formData,
+      pos: {
+        ...formData.pos,
+        [id]: { top, left }
+      }
     }));
   };
 
-  handleChange = ({ currentTarget: { name, value } }) => {
+  const handleChange = ({ currentTarget: { name, value } }) => {
     const number = Number.parseInt(value, 10);
-    this.setState({ [name]: !isNaN(number) ? number : value });
+    setFormDataTo(formData => ({
+      ...formData,
+      [name]: !isNaN(number) ? number : value
+    }));
   };
 
-  setRandomImgIdx = () => {
+  const setRandomImgIdx = () => {
     const { floor, random } = Math;
-    const { imgsData } = this.props;
-    const imgIdx = floor(random() * imgsData.length);
-    this.setState({ imgIdx });
-  };
-
-  toggleAllCaps = () => this.setState(state =>
-    ({ isAllCaps: !state.isAllCaps }));
-
-  render = () => {
-    const { props, state, resetState, setTexts, setPos, handleChange, setRandomImgIdx, toggleAllCaps } = this;
     const { imgsData } = props;
-
-    const createMemeImgProps = { imgsData, ...state, setPos };
-    const createMemeFormProps = { ...props, ...state, resetState, setTexts, handleChange, setRandomImgIdx, toggleAllCaps };
-
-    return (
-      <div className='MemeGenerator'>
-        <CreateMemeForm {...createMemeFormProps} />
-        <CreateMemeImg {...createMemeImgProps} />
-      </div>
-    );
+    const imgIdx = floor(random() * imgsData.length);
+    setFormDataTo(formData => ({
+      ...formData,
+      imgIdx
+    }));
   };
+
+  const toggleAllCaps = () => setFormDataTo(formData => ({
+    ...formData,
+    isAllCaps: !formData.isAllCaps
+  }));
+
+  const { imgsData } = props;
+
+  const createMemeImgProps = { imgsData, ...formData, setPos };
+  const createMemeFormProps = { ...props, ...formData, resetState, setTexts, handleChange, setRandomImgIdx, toggleAllCaps };
+
+  return (
+    <div className='MemeGenerator'>
+      <CreateMemeForm {...createMemeFormProps} />
+      <CreateMemeImg {...createMemeImgProps} />
+    </div>
+  );
 };
+
+export default MemeGenerator;
