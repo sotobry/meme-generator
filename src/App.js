@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Footer from './components/Footer';
 import FutureFeaturesList from './components/FutureFeaturesList';
@@ -8,68 +8,61 @@ import MemeList from './components/MemeList';
 
 import { updateLocalStorage } from './helperFunctions';
 
-export default class App extends React.Component {
-  state = {
-    imgsData: null,
-    userMemes: JSON.parse(localStorage.getItem('userMemes')) || [],
-    view: 'memeGeneratorView'
-  };
+const App = () => {
+  const [imgsData, setImgsDataTo] = useState(null);
+  //TODO confirm correctness.
+  const [userMemes, setUserMemesTo] = useState(() => JSON.parse(localStorage.getItem('userMemes')) || []);
+  const [view, setViewTo] = useState('memeGeneratorView');
 
-  addMeme = data => {
+  const addMeme = data => {
     const { imgIdx, texts, fontIdx, fontSize, isAllCaps, pos } = data;
 
-    this.setState(state => ({ userMemes: [{ id: String(Math.random()), imgIdx, texts, fontIdx, fontSize, isAllCaps, pos }, ...state.userMemes] }));
-  };
-  deleteMeme = id => {
-    this.setState(state => ({
-      userMemes: state.userMemes.filter(meme => meme.id !== id)
-    }));
+    setUserMemesTo(userMemes => [
+      { id: String(Math.random()), imgIdx, texts, fontIdx, fontSize, isAllCaps, pos },
+      ...userMemes
+    ]);
   };
 
-  saveMemeEdits = editedMeme => {
+  const deleteMeme = id =>
+    setUserMemesTo(userMemes => userMemes.filter(meme => meme.id !== id));
+
+  const saveMemeEdits = editedMeme => {
     console.log('saveMemeEdits function called.');
     const { id } = editedMeme;
 
-    this.setState(state => ({
-      userMemes: state.userMemes.map(meme => meme.id === id ? editedMeme : meme)
-    }));
+    setUserMemesTo(userMemes =>
+      userMemes.map(meme => meme.id === id ? editedMeme : meme));
   };
 
-  setViewTo = view => this.setState({ view });
+  const headerProps = { setViewTo };
+  const memeGeneratorProps = { imgsData, userMemes, view, addMeme };
+  const memeListProps = { imgsData, userMemes, deleteMeme, saveMemeEdits };
 
-  render = () => {
-    const { state, addMeme, deleteMeme, saveMemeEdits, setViewTo } = this;
-    const { imgsData, userMemes, view } = state;
-
-    const headerProps = { setViewTo };
-    const memeGeneratorProps = { ...state, addMeme };
-    const memeListProps = { imgsData, userMemes, deleteMeme, saveMemeEdits };
-
-    return (
-      <div className="App">
-        <Header {...headerProps} />
-        {imgsData &&
-          <>
-            {view === 'memeGeneratorView' &&
-              <MemeGenerator {...memeGeneratorProps} />}
-
-            {view === 'userMemesView' &&
-              <MemeList {...memeListProps} />}
-
-            {view === 'futureFeaturesView' &&
-              <FutureFeaturesList />}
-          </>
-        }
-        <Footer />
-      </div>
-    );
-  };
-
-  componentDidMount = () => {
+  useEffect(() => {
     fetch('https://api.imgflip.com/get_memes')
       .then(res => res.json())
-      .then(({ data: { memes: imgsData } }) => this.setState({ imgsData }));
-  };
+      .then(({ data: { memes: imgsData } }) => setImgsDataTo(imgsData));
+  }, []);
+  useEffect(() => updateLocalStorage(userMemes));
 
-  componentDidUpdate = () => updateLocalStorage(this.state.userMemes);
+  return (
+    <div className="App">
+      <Header {...headerProps} />
+      {imgsData &&
+        <>
+          {view === 'memeGeneratorView' &&
+            <MemeGenerator {...memeGeneratorProps} />}
+
+          {view === 'userMemesView' &&
+            <MemeList {...memeListProps} />}
+
+          {view === 'futureFeaturesView' &&
+            <FutureFeaturesList />}
+        </>
+      }
+      <Footer />
+    </div>
+  );
 };
+
+export default App;
